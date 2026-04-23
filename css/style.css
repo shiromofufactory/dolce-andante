@@ -510,9 +510,17 @@ body {
     padding-bottom: 4vh;
   }
 
-  /* メッセージウィンドウを低めにして立ち絵を大きく見せる */
+  /* メッセージウィンドウを低めにして立ち絵を大きく見せる。
+     行間と話者の余白を詰めることで、3行テキストも収まるようにする。 */
   .textbox {
-    height: 108px;
-    padding: 12px 20px 16px;
+    height: 120px;
+    padding: 10px 20px 14px;
+  }
+  .textbox .speaker {
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+  .textbox .text {
+    line-height: 1.55;
   }
 }
