@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dolce andante">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#8a6a8c">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<title>Dolce andante</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- 縦画面のときに表示される「横にしてください」画面 -->
+<div id="rotate-prompt">
+  <div class="rotate-inner">
+    <div class="rotate-icon">📱</div>
+    <p>横画面でプレイしてください</p>
+    <p class="rotate-sub">端末を横向きにすると、ゲームが始まります。</p>
+  </div>
+</div>
+
+<div id="app">
+
+  <!-- タイトル画面 -->
+  <section id="title-screen" class="screen active">
+    <div class="title-bg"></div>
+    <div class="title-inner">
+      <h1 class="game-title">Dolce andante</h1>
+      <p class="title-sub">2005 / 銀杏並木の、やわらかい日々</p>
+      <div class="title-menu">
+        <button id="btn-start" class="title-btn">はじめから</button>
+        <button id="btn-continue" class="title-btn">つづきから</button>
+        <button id="btn-gallery" class="title-btn">ギャラリー</button>
+        <button id="btn-credit" class="title-btn">クレジット</button>
+      </div>
+      <p class="title-foot">© 2026 Dolce andante</p>
+    </div>
+  </section>
+
+  <!-- ゲーム画面 -->
+  <section id="game-screen" class="screen">
+    <div class="bg-layer" id="bg-layer"></div>
+    <div class="cg-layer" id="cg-layer"></div>
+    <div class="chara-layer" id="chara-layer">
+      <div class="chara-slot" data-pos="left"></div>
+      <div class="chara-slot" data-pos="center"></div>
+      <div class="chara-slot" data-pos="right"></div>
+    </div>
+
+    <div class="date-banner" id="date-banner"></div>
+
+    <div class="textbox" id="textbox">
+      <div class="speaker" id="speaker"></div>
+      <div class="text" id="text"></div>
+      <div class="next-indicator" id="next-indicator">▼</div>
+    </div>
+
+    <div class="choices" id="choices"></div>
+
+    <div class="toolbar">
+      <button class="tool-btn" id="btn-menu">≡</button>
+      <button class="tool-btn" id="btn-back" title="前のメッセージを再表示（戻る）">◀</button>
+      <button class="tool-btn" id="btn-auto">AUTO</button>
+      <button class="tool-btn" id="btn-skip">SKIP</button>
+      <button class="tool-btn" id="btn-log">LOG</button>
+    </div>
+
+    <!-- 巻き戻し中の表示インジケーター -->
+    <div id="review-indicator" class="review-indicator hidden">
+      <span>巻き戻し中</span>
+      <span id="review-pos"></span>
+      <span class="review-hint">クリックで現在の場面に戻る</span>
+    </div>
+  </section>
+
+  <!-- メニューオーバーレイ -->
+  <div id="menu-overlay" class="overlay hidden">
+    <div class="menu-inner">
+      <h2>メニュー</h2>
+      <button class="menu-btn" data-act="resume">ゲームに戻る</button>
+      <button class="menu-btn" data-act="title">タイトルへ戻る</button>
+      <button class="menu-btn" data-act="gallery">ギャラリー</button>
+      <p class="menu-note">進行は自動的に保存されています。</p>
+    </div>
+  </div>
+
+  <!-- ログ -->
+  <div id="log-overlay" class="overlay hidden">
+    <div class="log-inner">
+      <h2>ログ</h2>
+      <div id="log-content"></div>
+      <button class="menu-btn" id="btn-log-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ギャラリー -->
+  <div id="gallery-overlay" class="overlay hidden">
+    <div class="gallery-inner">
+      <h2>ギャラリー</h2>
+      <div id="gallery-content">
+        <p class="gallery-hint">エンディングを見ると、CGや背景が解放されます。</p>
+      </div>
+      <button class="menu-btn" id="btn-gallery-close">閉じる</button>
+    </div>
+  </div>
+
+  <!-- エンディング画面 -->
+  <section id="ending-screen" class="screen">
+    <div class="ending-inner">
+      <h2 id="ending-title">エンディング</h2>
+      <p id="ending-text"></p>
+      <button class="title-btn" id="btn-ending-back">タイトルへ戻る</button>
+    </div>
+  </section>
+
+</div>
+
+<script src="js/save.js"></script>
+<script src="data/scenario_common.js"></script>
+<script src="data/scenario_routes.js"></script>
+<script src="data/assets_manifest.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

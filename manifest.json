@@ -1,0 +1,27 @@
+{
+  "name": "Dolce andante",
+  "short_name": "Dolce",
+  "description": "2005年、銀杏並木の、やわらかい日々。大学オーケストラのノベルゲーム。",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#1a1510",
+  "theme_color": "#8a6a8c",
+  "lang": "ja",
+  "categories": ["games"],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
