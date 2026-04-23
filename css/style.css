@@ -491,3 +491,28 @@ body {
 @media (orientation: portrait) and (max-width: 768px) {
   .textbox { height: 144px; }
 }
+
+/* ========== 横長スマホ向け微調整（短い縦幅） ========== */
+@media (orientation: landscape) and (max-height: 540px) {
+  /* タイトル画面: タイトル/サブは上部に、ボタンは下部に寄せる */
+  .title-inner {
+    padding: 3vh 8vw 4vh;
+  }
+  .title-menu {
+    margin-top: auto;
+    gap: 10px;
+  }
+  .title-btn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+  }
+  #title-screen.has-image .title-inner {
+    padding-bottom: 4vh;
+  }
+
+  /* メッセージウィンドウを低めにして立ち絵を大きく見せる */
+  .textbox {
+    height: 108px;
+    padding: 12px 20px 16px;
+  }
+}

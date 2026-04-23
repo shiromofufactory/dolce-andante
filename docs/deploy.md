@@ -14,7 +14,7 @@ git commit -m "Initial commit: Dolce andante"
 # 仮にリポジトリ名を dolce-andante とします
 
 git branch -M main
-git remote add origin git@github.com:<あなたのユーザー名>/dolce-andante.git
+git remote add origin git@github.com:shiromofufactory/dolce-andante.git
 git push -u origin main
 ```
 
@@ -23,12 +23,12 @@ git push -u origin main
 1. GitHub のリポジトリページ → **Settings** → **Pages**
 2. **Source** で **Deploy from a branch** を選択
 3. **Branch** を `main` / `/ (root)` に設定 → **Save**
-4. 1〜2分待つと `https://<ユーザー名>.github.io/dolce-andante/` でアクセス可能になります
+4. 1〜2分待つと `https://shiromofufactory.github.io/dolce-andante/` でアクセス可能になります
 
 ## 3. スマホで PWA インストール
 
 ### iPhone (Safari)
-1. Safari で `https://<ユーザー名>.github.io/dolce-andante/` を開く
+1. Safari で `https://shiromofufactory.github.io/dolce-andante/` を開く
 2. 横画面でゲームを開始（初回タップで全画面＋横画面ロック）
 3. 共有ボタン（⬆️）→「ホーム画面に追加」
 
@@ -63,7 +63,7 @@ git push
 
 独自ドメインを使いたい場合：
 1. `CNAME` ファイルを作成してドメイン名を書く
-2. ドメインのDNS設定で CNAME レコードを `<ユーザー名>.github.io` に向ける
+2. ドメインのDNS設定で CNAME レコードを `shiromofufactory.github.io` に向ける
 3. GitHub Pages 設定で「Custom domain」を入力・HTTPS Enforced
 
 ## よくある問題
