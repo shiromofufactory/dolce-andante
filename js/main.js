@@ -165,8 +165,8 @@ function initUI() {
     document.getElementById("gallery-overlay").classList.add("hidden");
   });
 
-  // エンディング → タイトル
-  document.getElementById("btn-ending-back").addEventListener("click", () => {
+  // エンディング → タイトル（ボタン or 画面のどこをタップしてもOK）
+  const backFromEnding = () => {
     document.getElementById("ending-screen").classList.remove("active");
     document.getElementById("title-screen").classList.add("active");
     Engine.playBgm("title");   // タイトル曲に切り替え
@@ -176,6 +176,12 @@ function initUI() {
       btnContinue.style.opacity = "1";
       btnContinue.style.cursor = "pointer";
     }
+  };
+  document.getElementById("btn-ending-back").addEventListener("click", backFromEnding);
+  // 長文エンディングでボタンが画面外に押し出された場合のフォールバック
+  document.getElementById("ending-screen").addEventListener("click", (e) => {
+    if (e.target.closest("#btn-ending-back")) return;  // ボタンは個別ハンドラに任せる
+    backFromEnding();
   });
 
 }

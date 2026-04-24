@@ -445,13 +445,17 @@ body {
 .gallery-hint { color: var(--ink-soft); grid-column: 1 / -1; text-align: center; padding: 40px 0; }
 
 /* エンディング画面 */
-#ending-screen { background: #0b0808; color: #f6f1e4; }
+#ending-screen { background: #0b0808; color: #f6f1e4; cursor: pointer; }
 .ending-inner {
   position: absolute; inset: 0;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   padding: 40px 20px;
   text-align: center;
+  overflow-y: auto;
 }
+/* 縦方向の余白で中央寄せしつつ、オーバーフロー時はスクロール可 */
+.ending-inner > :first-child { margin-top: auto; }
+.ending-inner > :last-child  { margin-bottom: auto; }
 #ending-title {
   font-size: clamp(1.6rem, 4vw, 2.4rem);
   color: #c9a55a;
@@ -522,5 +526,13 @@ body {
   }
   .textbox .text {
     line-height: 1.55;
+  }
+
+  /* エンディング画面: 狭い縦幅でも内容が収まるように詰める */
+  .ending-inner { padding: 20px 20px; }
+  #ending-title { margin-bottom: 14px; }
+  #ending-text {
+    line-height: 1.7;
+    margin-bottom: 20px;
   }
 }

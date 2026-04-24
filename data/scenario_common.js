@@ -1096,6 +1096,18 @@ const SCENARIO = {
   bg: "apartment",
   date: "自宅 ／ 夜",
   nodes: [
+    // 1-15 で「免許合宿」を自分から口にしたかで文面を分岐
+    { type: "condJump",
+      branches: [
+        { cond: { flag: "license_camp" }, to: "1-19a" }
+      ],
+      default: "1-19b" }
+  ]
+},
+"1-19a": {
+  bg: "apartment",
+  date: "自宅 ／ 夜",
+  nodes: [
     { type: "clearChara", pos: "all" },
     { text: "風呂上がり、髪を拭きながら、部屋の窓を開ける。夏の夜風。携帯が、ピコン、と鳴った。" },
     { speaker: "ミオ（メール）", text: "今日、お疲れさま。ふれんちのコントラバス、ちゃんと聞こえたよ。思ったより上手くなってて、ちょっと感動した。免許合宿、行くなら連絡ちょうだい" },
@@ -1108,6 +1120,27 @@ const SCENARIO = {
         effects: [{ flag: "summer_path", value: "B" }],
         goto: "1-19-r2" },
       { label: "「残念だけど、今年は家にいる」と断る",
+        effects: [{ param: "mio", delta: -1 }, { flag: "summer_path", value: "B_or_D" }],
+        goto: "1-19-r3" }
+    ]}
+  ]
+},
+"1-19b": {
+  bg: "apartment",
+  date: "自宅 ／ 夜",
+  nodes: [
+    { type: "clearChara", pos: "all" },
+    { text: "風呂上がり、髪を拭きながら、部屋の窓を開ける。夏の夜風。携帯が、ピコン、と鳴った。" },
+    { speaker: "ミオ（メール）", text: "今日、お疲れさま。ふれんちのコントラバス、ちゃんと聞こえたよ。思ったより上手くなってて、ちょっと感動した。……さっき、言いそびれたんだけど、私、８月、免許合宿行くんだ。ふれんちは、どうする？" },
+    { text: "――「誘ったら来てくれる？」は、たぶん、この前振りだったんだ。ユタカから聞いた話も、これで繋がる。俺は、しばらく携帯を見つめたあと、返信を打ち始めた。" },
+    { type: "choice", choices: [
+      { label: "「俺も行く。同じ合宿にする」と踏み込む",
+        effects: [{ param: "mio", delta: 2 }, { flag: "summer_path", value: "A" }, { flag: "license_camp", value: true }],
+        goto: "1-19-r1" },
+      { label: "「考えとく。決まったら連絡する」と保留する",
+        effects: [{ flag: "summer_path", value: "B" }],
+        goto: "1-19-r2" },
+      { label: "「今年は、家のこととか色々あって」と断る",
         effects: [{ param: "mio", delta: -1 }, { flag: "summer_path", value: "B_or_D" }],
         goto: "1-19-r3" }
     ]}
@@ -1145,17 +1178,17 @@ const SCENARIO = {
   nodes: [
     { text: "演奏会の余韻も、朝には消える。部活はオフ。大学も夏休み。――俺は、今年の夏をどう過ごすか、決めなきゃいけない。" },
     { type: "choice", choices: [
-      { label: "Path A：免許合宿に行く",
+      { label: "ミオと一緒に、免許合宿へ行く",
         cond: { flag: "summer_path", eq: "A" },
         effects: [{ flag: "summer_path", value: "A" }],
         goto: "2A-01" },
-      { label: "Path B：街に残ってバイト中心",
+      { label: "街に残って、バイト中心で過ごす",
         effects: [{ flag: "summer_path", value: "B" }],
         goto: "2B-01" },
-      { label: "Path C：旅行に行く",
+      { label: "一人で、どこかへ旅に出る",
         effects: [{ flag: "summer_path", value: "C" }],
         goto: "2C-01" },
-      { label: "Path D：帰省する",
+      { label: "実家に、帰省する",
         effects: [{ flag: "summer_path", value: "D" }],
         goto: "2D-01" }
     ]}
